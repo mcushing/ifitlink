@@ -541,6 +541,8 @@ def UploadIfitStepsToGoogle(IfitWorkoutJson):
 
 def UploadIfitSessionToGoogle(IfitWorkoutJson):
     '''Function that creates a workout on Google Fit and gives it a name and the activity type'''
+    '''WMC'''
+    print('iFit Title:{}\n'.format(IfitWorkoutJson.title))
     session_body = {}
     session_body.update(
         id=IfitWorkoutJson.id,
@@ -548,7 +550,9 @@ def UploadIfitSessionToGoogle(IfitWorkoutJson):
         startTimeMillis=IfitWorkoutJson.stats["start"],
         endTimeMillis=IfitWorkoutJson.stats["end"],
         application={"name": "iFit-Sync"},
-        activityType=8,
+        ## activityType=8,
+        activityType=1, ## WMC change to Biking
+        ## activityTyp=17  ## this is the Spinning activity type - I'm going use Biking so it saves the location information
     )
 
     try:
